@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 const Page = () => {
   // TODO: get user input for room and name
   const room = 'quickstart-room'
-  const name = 'quickstart-user'
+  const [name, setName] = useState(Math.random().toString())
   const [token, setToken] = useState('')
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Page = () => {
       const data = await resp.json()
       setToken(data.token)
     })()
-  }, [])
+  }, [name])
 
   if (token === '') {
     return <div>Getting token...</div>
