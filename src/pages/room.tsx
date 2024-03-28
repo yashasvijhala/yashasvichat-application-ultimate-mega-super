@@ -1,3 +1,4 @@
+import { LiveKitConfig } from '@/lib/livekit'
 import {
   ControlBar,
   GridLayout,
@@ -35,7 +36,7 @@ const Page = () => {
       video={true}
       audio={true}
       token={token}
-      serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
+      serverUrl={LiveKitConfig.url}
       // Use the default LiveKit theme for nice styles.
       data-lk-theme="default"
       style={{ height: '100dvh' }}

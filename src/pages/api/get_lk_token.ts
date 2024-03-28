@@ -1,3 +1,4 @@
+import { LiveKitConfig } from '@/lib/livekit'
 import { AccessToken } from 'livekit-server-sdk'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -15,9 +16,9 @@ export default async function handler(
     return res.status(400).json({ error: 'Missing "username" query parameter' })
   }
 
-  const apiKey = process.env.LIVEKIT_API_KEY
-  const apiSecret = process.env.LIVEKIT_API_SECRET
-  const wsUrl = process.env.NEXT_PUBLIC_LIVEKIT_URL
+  const apiKey = LiveKitConfig.apiKey
+  const apiSecret = LiveKitConfig.secret
+  const wsUrl = LiveKitConfig.url
 
   if (!apiKey || !apiSecret || !wsUrl) {
     return res.status(500).json({ error: 'Server misconfigured' })
